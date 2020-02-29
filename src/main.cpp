@@ -1,11 +1,21 @@
 #include <SFML/Graphics.hpp>
+#include "Points.hpp"
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    // Create window
+    sf::RenderWindow window(sf::VideoMode(500, 500), "Point bodies");
 
+    // Initialize points
+    std::vector<sf::Vector2f> positions;
+    positions.push_back(sf::Vector2f(50.0, 50.0));
+    positions.push_back(sf::Vector2f(150.0, 50.0));
+    positions.push_back(sf::Vector2f(50.0, 150.0));
+    positions.push_back(sf::Vector2f(100.0, 150.0));
+    positions.push_back(sf::Vector2f(100.0, 100.0));
+    Points points(positions);
+
+    // Run simulation
     while (window.isOpen())
     {
         sf::Event event;
@@ -16,7 +26,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(points);
         window.display();
     }
 
